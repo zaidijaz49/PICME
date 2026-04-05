@@ -57,7 +57,7 @@ function Rating() {
 
       {/* Send Button */}
       <div>
-       <Link to="/signin"> <Button label="Send Review" onClick={handleSendReview} /></Link>
+       <Link to="/auth/signin"> <Button label="Send Review" onClick={handleSendReview} /></Link>
       </div>
     </div>
   );

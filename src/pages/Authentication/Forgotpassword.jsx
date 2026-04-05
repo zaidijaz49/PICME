@@ -57,7 +57,7 @@ function Forgotpassword() {
             <Button type="submit" varient="primary" label="Continue" />
           </form>
 
-          <Link to="/signin">
+          <Link to="/auth/signin">
             <Button
               varient="secondary"
               label="Back to login"

@@ -46,7 +46,7 @@ function Signup() {
       localStorage.setItem("authToken", cleanToken);
     }
 
-    navigate("/signin");
+    navigate("/auth/signin");
 
   } catch (err) {
     setError(err.response?.data?.message || "Invalid OTP. Try again.");
@@ -250,7 +250,7 @@ const handleResendOtp = async () => {
       <p className="text-center text-gray-600 mt-4 text-sm">
         Already have an account?{" "}
         <span
-          onClick={() => navigate("/signin")}
+          onClick={() => navigate("/auth/signin")}
           className="text-[#2BAFC7] font-medium cursor-pointer"
         >
           Sign in

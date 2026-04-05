@@ -138,7 +138,7 @@ function Reset() {
               Your password has been changed successfully.
             </p>
 
-            <Link to="/Signin">
+            <Link to="/auth/Signin">
               <Button label="Back to Login" />
             </Link>
           </div>

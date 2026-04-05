@@ -152,7 +152,7 @@ function Signin() {
         <p className="text-center text-gray-600 mt-4 text-sm poppins-regular">
           Don't have an account?{" "}
           <a
-            href="/signup"
+            href="/auth/signup"
             className="text-[#2BAFC7] font-medium poppins-regular"
           >
             Sign up

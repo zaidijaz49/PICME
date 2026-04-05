@@ -13,7 +13,7 @@ function Welcome() {
 
         <div className="flex flex-col gap-4">
           {/* Customer Button */}
-          <Link to="/Signin" state={{ role: "customer" }}>
+          <Link to="/auth/Signup" state={{ role: "customer" }}>
             <button
               onMouseEnter={() => setActive("customer")}
               onMouseLeave={() => setActive(null)}
@@ -28,7 +28,7 @@ function Welcome() {
             </button>
           </Link>
           {/* Photographer Button */}
-          <Link to="/signin" state={{ role: "photographer" }}>
+          <Link to="auth/signup" state={{ role: "photographer" }}>
             {" "}
             <button
               onMouseEnter={() => setActive("photographer")}

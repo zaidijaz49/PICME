@@ -36,7 +36,7 @@ function CustomerNavbar({ menuItems }) {
       sessionStorage.removeItem("authToken");
 
       alert("Logged out successfully!");
-      window.location.href = "/signin";
+      window.location.href = "/auth/signin";
     } catch (err) {
       const message = err.response?.data?.message || "Something went wrong."; // ✅ was missing `const`
       alert(message); // ✅ was not being shown
