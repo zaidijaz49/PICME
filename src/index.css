@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "react-day-picker/dist/style.css";
+
+/* global reset */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* caret fix */
+* {
+  caret-color: transparent;
+}
+
+input,
+textarea {
+  caret-color: auto;
+}
+
+/* ✅ custom font utilities */
+@layer utilities {
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    
+  }
+
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
+}
+.rdp-root {
+  --rdp-day-width: 52px;
+  --rdp-day-height: 52px;
+
+  --rdp-day_button-width: 108px;
+  --rdp-day_button-height: 48px;
+
+  --rdp-months-gap: 20px;
+}
