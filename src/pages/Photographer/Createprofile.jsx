@@ -1,5 +1,5 @@
 import Button from "../../components/common/Button";
-import Group from "../../assets/group.png";
+import Group from "../../assets/Group.png";
 import { useState, useEffect } from "react";
 import ProfilecreationForm from "../../components/Features/ProfilecreationForm";
 import UploadCard from "../../components/Features/Uploadcard";
