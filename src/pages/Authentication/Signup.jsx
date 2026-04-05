@@ -1,7 +1,5 @@
 import React, { useState,useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useGoogleLogin } from "@react-oauth/google";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import Button from "../../components/common/Button";
 import { Input } from "../../components/common/Input";
 import { FaUser, FaLock, FaFacebookF } from "react-icons/fa";
@@ -74,38 +72,8 @@ const handleResendOtp = async () => {
 }, [step, time]); // ← keep both
    
   // ================= GOOGLE LOGIN =================
-  const login = useGoogleLogin({
-    flow: "auth-code", // ✅ back to auth-code
-    onSuccess: async (tokenResponse) => {
-      try {
-        const res = await api.post("/api/v1/oauth/google_auth", {
-          code: tokenResponse.code, // ✅ send code as token
-          redirect_url: "http://localhost:5173/customer", // ✅ exact URL from Postman
-        });
-
-        const rawToken = res.headers["authorization"];
-        if (rawToken) {
-          const cleanToken = rawToken.replace(/^Bearer\s+/i, "");
-          localStorage.setItem("authToken", cleanToken);
-        }
-
-        navigate("/customer");
-      } catch (err) {
-        console.log("Google login error:", err.response?.data);
-        setError(err.response?.data?.message || "Google login failed.");
-      }
-    },
-    onError: () => setError("Google login failed."),
-  });
+ 
   // ================= FACEBOOK LOGIN =================
-  const handleFacebookResponse = (response) => {
-    if (!response || !response.accessToken) {
-      setError("Facebook login canceled or failed.");
-      return;
-    }
-    // TODO: send accessToken to backend like Google if needed
-    navigate("/customer");
-  };
 
   // ================= SIGNUP FORM =================
   const handleSubmit = async (e) => {
@@ -225,27 +193,20 @@ const handleResendOtp = async () => {
       </div>
 
       <button
-        onClick={() => login()}
         className="w-full py-3 flex items-center justify-center border rounded-lg mb-3 hover:bg-gray-100 transition cursor-pointer"
       >
         <FcGoogle className="mr-2" /> Continue with Google
       </button>
 
-      <FacebookLogin
-        appId="785522083461166"
-        autoLoad={false}
-        fields="name,email,picture"
-        callback={handleFacebookResponse}
-        render={(renderProps) => (
+     
           <button
-            onClick={renderProps.onClick}
+          
             className="w-full py-3 flex items-center justify-center border rounded-lg mb-3 hover:bg-gray-100 transition cursor-pointer"
           >
             <FaFacebookF className="mr-2 text-blue-600" />
             Continue with Facebook
           </button>
-        )}
-      />
+     
 
       <p className="text-center text-gray-600 mt-4 text-sm">
         Already have an account?{" "}
