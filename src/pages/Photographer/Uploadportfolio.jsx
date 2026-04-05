@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../components/common/Button";
-import Image from "../../assets/image.png";
-import Video from "../../assets/video.png";
+import Image from "../../assets/Image.png";
+import Video from "../../assets/Video.png";
 import GalleryGrid from "../../components/Features/Gallerygrid";
 import UploadBox from "../../components/Features/Uploadbox";
-import Check from "../../assets/frame.svg";
-import Uploadicon from "../../assets/uploadicon.svg";
+import Frame from "../../assets/Frame.svg";
+import Uploadicon from "../../assets/Uploadicon.svg";
 import api from "../../api/axios.jsx";
 
 function Uploadportfolio() {
@@ -112,7 +112,7 @@ function Uploadportfolio() {
               onClick={() => setSelected("photos")}
             >
               <div className="absolute top-4 right-4">
-                {selected === "photos" && <img src={Check} className="w-6 h-6" />}
+                {selected === "photos" && <img src={Frame} className="w-6 h-6" />}
               </div>
               <img src={Image} alt="photos" className="w-16 h-16 mb-4" />
               <p className="text-cyan-600 font-medium text-lg poppins-medium">Photos</p>
@@ -124,7 +124,7 @@ function Uploadportfolio() {
               onClick={() => setSelected("videos")}
             >
               <div className="absolute top-4 right-4">
-                {selected === "videos" && <img src={Check} className="w-6 h-6" />}
+                {selected === "videos" && <img src={Frame} className="w-6 h-6" />}
               </div>
               <img src={Video} alt="videos" className="w-16 h-16 mb-4" />
               <p className="text-cyan-600 font-medium text-lg poppins-medium">Videos</p>

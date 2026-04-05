@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Package from "../../assets/Package.png";
-import Portfolio from "../../assets/Port.png";
+import Port from "../../assets/Port.png";
 import Booking from "../../assets/Booking.png";
 import Button from "../../components/common/Button";
-import Check from "../../assets/frame.svg";
+import Frame from "../../assets/Frame.svg";
 import { useNavigate } from "react-router-dom";
 
 
@@ -38,10 +38,10 @@ function Home() {
         >
           <div className="absolute top-4 right-4">
             {selected === "Portfolio" && (
-              <img src={Check} className="w-6 h-6" />
+              <img src={Frame} className="w-6 h-6" />
             )}
           </div>
-          <img src={Portfolio} className="h-24 w-24 mb-4 object-contain" />
+          <img src={Port} className="h-24 w-24 mb-4 object-contain" />
           <h1 className="font-semibold text-2xl text-gray-800 poppins-medium">Portfolio</h1>
         </div>
 
@@ -52,7 +52,7 @@ function Home() {
         >
           <div className="absolute top-4 right-4">
             {selected === "Package" && (
-              <img src={Check} className="w-6 h-6" />
+              <img src={Frame} className="w-6 h-6" />
             )}
           </div>
           <img src={Package} className="h-24 w-24 mb-4 object-contain" />
@@ -66,7 +66,7 @@ function Home() {
         >
           <div className="absolute top-4 right-4">
             {selected === "Booking" && (
-              <img src={Check} className="w-6 h-6" />
+              <img src={Frame} className="w-6 h-6" />
             )}
           </div>
           <img src={Booking} className="h-24 w-24 mb-4 object-contain" />

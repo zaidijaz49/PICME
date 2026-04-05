@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../assets/card.png";
+import Card from "../../assets/Card.png";
 import { History } from "../../utils/Mock";
 function Transaction() {
   return (
