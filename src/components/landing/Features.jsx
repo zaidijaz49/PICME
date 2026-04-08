@@ -1,6 +1,6 @@
 import React from "react";
 import { FaImage, FaCrosshairs, FaCamera } from "react-icons/fa";
-import Camera from "../../assets/camera1.png"
+import Camera from "../../assets/Camera1.png"
 import Image from "../../assets/image1.png"
 import Focus from "../../assets/focus.png"
 

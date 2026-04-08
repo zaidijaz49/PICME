@@ -1,6 +1,6 @@
 import React from "react";
 import { X } from "lucide-react"; // install: npm i lucide-react
-import Checktick from "../../assets/checktick.svg"
+import Checktick from "../../assets/Checktick.svg"
 
 function BookingSuccessPopup({ open, onClose }) {
   if (!open) return null;
