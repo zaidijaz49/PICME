@@ -17,7 +17,6 @@ function Paymentdetails() {
 
   // Package data from previous page
   const selectedPackage = state?.package;
-  const assignedVariant = state?.variant;
   const photographerId = state?.photographerId;
 
   // Build features from package fields

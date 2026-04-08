@@ -28,7 +28,7 @@ function Welcome() {
             </button>
           </Link>
           {/* Photographer Button */}
-          <Link to="auth/signup" state={{ role: "photographer" }}>
+          <Link to="/auth/signup" state={{ role: "photographer" }}>
             {" "}
             <button
               onMouseEnter={() => setActive("photographer")}
