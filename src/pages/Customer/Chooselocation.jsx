@@ -1,5 +1,5 @@
 import Button from "../../components/common/Button";
-import Illustration from "../../assets/illustration.png";
+import Illustration from "../../assets/Illustration.png";
 import { Link } from "react-router";
 
 const ChooseLocation = () => {
