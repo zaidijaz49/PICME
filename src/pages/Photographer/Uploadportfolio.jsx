@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../components/common/Button";
-import Image from "../../assets/Image.png";
+import Image from "../../assets/image.png";
 import Video from "../../assets/Video.png";
 import GalleryGrid from "../../components/Features/Gallerygrid";
 import UploadBox from "../../components/Features/Uploadbox";
 import Frame from "../../assets/Frame.svg";
-import Uploadicon from "../../assets/Uploadicon.svg";
+import Uploadicon from "../../assets/uploadicon.svg";
 import api from "../../api/axios.jsx";
 
 function Uploadportfolio() {
