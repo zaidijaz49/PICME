@@ -42,24 +42,33 @@ function Uploadportfolio() {
 
   const handlefile = async (data) => {
     const { category, file } = data;
+    const isVideo = file.type.startsWith("video/");
 
     try {
       const formData = new FormData();
-      formData.append("photos[]", file);
+      if (isVideo) {
+      formData.append("videos[]", file);  // 👈 video upload
+    } else {
+      formData.append("photos[]", file);  // 👈 photo upload
+    }
       formData.append("work_type", category);
 
-      const response = await api.post("/api/v1/photographers/upload_work", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await api.post(
+        "/api/v1/photographers/upload_work",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        },
+      );
 
       console.log("Upload success:", response.data);
       setFile(file);
 
       // Refetch gallery after upload — this also triggers the skeleton again
       await getphotographersdata();
-
     } catch (error) {
-      const message = error.response?.data?.message || error.message || "Upload failed";
+      const message =
+        error.response?.data?.message || error.message || "Upload failed";
       console.error("Upload error:", error);
       alert(message);
     }
@@ -80,19 +89,20 @@ function Uploadportfolio() {
       </div>
       {/* Fake image grid — 7 grey boxes matching real grid layout */}
       <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
-        {Array(7).fill(null).map((_, i) => (
-          <div
-            key={i}
-            className="rounded-xl bg-gray-200 animate-pulse h-28 w-full"
-          />
-        ))}
+        {Array(7)
+          .fill(null)
+          .map((_, i) => (
+            <div
+              key={i}
+              className="rounded-xl bg-gray-200 animate-pulse h-28 w-full"
+            />
+          ))}
       </div>
     </div>
   );
 
   return (
     <div>
-
       {/* ───── Step 1 — Choose Photos or Videos ───── */}
       {step === 1 && (
         <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 bg-white">
@@ -112,10 +122,14 @@ function Uploadportfolio() {
               onClick={() => setSelected("photos")}
             >
               <div className="absolute top-4 right-4">
-                {selected === "photos" && <img src={Frame} className="w-6 h-6" />}
+                {selected === "photos" && (
+                  <img src={Frame} className="w-6 h-6" />
+                )}
               </div>
               <img src={Image} alt="photos" className="w-16 h-16 mb-4" />
-              <p className="text-cyan-600 font-medium text-lg poppins-medium">Photos</p>
+              <p className="text-cyan-600 font-medium text-lg poppins-medium">
+                Photos
+              </p>
             </div>
 
             {/* Videos Card */}
@@ -124,10 +138,14 @@ function Uploadportfolio() {
               onClick={() => setSelected("videos")}
             >
               <div className="absolute top-4 right-4">
-                {selected === "videos" && <img src={Frame} className="w-6 h-6" />}
+                {selected === "videos" && (
+                  <img src={Frame} className="w-6 h-6" />
+                )}
               </div>
               <img src={Video} alt="videos" className="w-16 h-16 mb-4" />
-              <p className="text-cyan-600 font-medium text-lg poppins-medium">Videos</p>
+              <p className="text-cyan-600 font-medium text-lg poppins-medium">
+                Videos
+              </p>
             </div>
           </div>
 
@@ -153,6 +171,7 @@ function Uploadportfolio() {
             icon={Image}
             icon2={Uploadicon}
             title="Upload Photos"
+            type="image"
             handlefile={handlefile}
           />
 
@@ -163,7 +182,11 @@ function Uploadportfolio() {
           )}
 
           {/* Show skeleton while loading, real gallery when done */}
-          {loading ? <LoadingSkeleton /> : <GalleryGrid title="Uploaded Photos" images={photos} />}
+          {loading ? (
+            <LoadingSkeleton />
+          ) : (
+            <GalleryGrid title="Uploaded Photos" images={photos} />
+          )}
         </div>
       )}
 
@@ -183,6 +206,7 @@ function Uploadportfolio() {
             icon={Video}
             icon2={Uploadicon}
             title="Upload Videos"
+            type="video"
             handlefile={handlefile}
           />
 
@@ -193,10 +217,13 @@ function Uploadportfolio() {
           )}
 
           {/* Show skeleton while loading, real gallery when done */}
-          {loading ? <LoadingSkeleton /> : <GalleryGrid title="Uploaded Videos" images={videos} />}
+          {loading ? (
+            <LoadingSkeleton />
+          ) : (
+            <GalleryGrid title="Uploaded Videos" images={videos} />
+          )}
         </div>
       )}
-
     </div>
   );
 }

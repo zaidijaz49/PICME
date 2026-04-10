@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 
 // List of categories shown in the dropdown
-const CATEGORIES = ["birthday", "wedding", "portrait", "landscape", "event", "corporate", "newborn"];
+const CATEGORIES = [
+  "birthday",
+  "wedding",
+  "portrait",
+  "landscape",
+  "event",
+  "corporate",
+  "newborn",
+];
 
 // UploadModal receives 3 props from UploadBox:
 // - open: true/false — controls whether the modal is visible
 // - closeModal: function — called when user clicks X or Cancel
 // - onSubmit: function — called with { category, file } when user clicks Submit
-function UploadModal({ open, closeModal, onSubmit }) {
+function UploadModal({ open, closeModal, onSubmit, type }) {
   // Track which category the user picked
   const [category, setCategory] = useState("birthday");
 
@@ -54,10 +62,8 @@ function UploadModal({ open, closeModal, onSubmit }) {
   return (
     /* Dark overlay behind the modal */
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-
       {/* Modal box */}
       <div className="bg-white rounded-2xl p-8 w-full max-w-sm relative shadow-2xl">
-
         {/* Close (X) button — top right corner */}
         <button
           onClick={handleClose}
@@ -73,7 +79,8 @@ function UploadModal({ open, closeModal, onSubmit }) {
 
         {/* Subtitle */}
         <p className="text-center text-sm text-gray-500 leading-relaxed mb-6">
-          Create your profile to showcase stunning photography and attract clients.
+          Create your profile to showcase stunning photography and attract
+          clients.
         </p>
 
         {/* Category dropdown */}
@@ -98,7 +105,10 @@ function UploadModal({ open, closeModal, onSubmit }) {
         {/* Drag & Drop / Click to upload area */}
         <div
           onDrop={handleDrop}
-          onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setIsDragging(true);
+          }}
           onDragLeave={() => setIsDragging(false)}
           onClick={() => document.getElementById("file-input").click()} // open file picker on click
           className={`border-2 border-dashed rounded-2xl py-8 px-4 text-center cursor-pointer transition-colors ${
@@ -108,23 +118,49 @@ function UploadModal({ open, closeModal, onSubmit }) {
           }`}
         >
           {/* Hidden file input — triggered by clicking the drop zone */}
-          <input
-            id="file-input"
-            type="file"
-            multiple 
-            accept=".jpg,.jpeg,.png"
-            className="hidden"
-            onChange={handleFileChange}
-          />
+          {type == "image" && (
+            <input
+              id="file-input"
+              type="file"
+              multiple
+              accept=".jpg,.jpeg,.png"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+          )}
+          {type == "video" && (
+            <input
+              id="file-input"
+              type="file"
+              multiple
+              accept=".mp4,.mov,.avi,.webm" 
+              className="hidden"
+              onChange={handleFileChange}
+            />
+          )}
 
           {/* Upload cloud icon */}
-          <svg className="mx-auto mb-3" width="56" height="46" viewBox="0 0 56 46" fill="none">
+          <svg
+            className="mx-auto mb-3"
+            width="56"
+            height="46"
+            viewBox="0 0 56 46"
+            fill="none"
+          >
             <path
               d="M41 30c4.97 0 9-4.03 9-9s-4.03-9-9-9c-.34 0-.68.02-1.01.06C38.62 8.2 33.71 5 28 5 20.27 5 14 11.27 14 19c0 .42.02.84.07 1.25C10.08 21.43 7 24.88 7 29c0 5.52 4.48 10 10 10h24V30z"
-              stroke="#14b8a6" strokeWidth="2" fill="none"
+              stroke="#14b8a6"
+              strokeWidth="2"
+              fill="none"
             />
             <circle cx="28" cy="33" r="9" fill="#2BAFC7" />
-            <path d="M28 30v6M25 32.5L28 30l3 2.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M28 30v6M25 32.5L28 30l3 2.5"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
 
           <p className="text-sm font-semibold text-gray-800 mb-1">
@@ -159,7 +195,6 @@ function UploadModal({ open, closeModal, onSubmit }) {
         >
           Submit
         </button>
-
       </div>
     </div>
   );

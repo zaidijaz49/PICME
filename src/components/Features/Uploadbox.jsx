@@ -3,7 +3,7 @@ import Uploadicon from "../../assets/uploadicon.svg";
 import UploadModal from "../Features/UploadModal";
 
 
-function UploadBox({ icon, title, handlefile, icon2 = Uploadicon }) {
+function UploadBox({ icon, title, handlefile,type, icon2 = Uploadicon }) {
   const [openModal, setOpenModal] = useState(false);
 
   const handleSubmit = (data) => {
@@ -32,6 +32,7 @@ function UploadBox({ icon, title, handlefile, icon2 = Uploadicon }) {
       {/* Modal */}
       <UploadModal
         open={openModal}
+        type={type}
         closeModal={() => setOpenModal(false)}
         onSubmit={handleSubmit}
       />

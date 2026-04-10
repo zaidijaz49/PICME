@@ -42,11 +42,11 @@ function Signin() {
       setLoading(true);
 
       const response = await api.post("/api/v1/auth/sign_in", payload); // ✅
+      console.log(response);
 
       // Token from header
       const rawToken = response.headers["authorization"];
       const cleanToken = rawToken.replace(/^Bearer\s+/i, "");
-
       // Save token
       if (remember) {
         localStorage.setItem("authToken", cleanToken);
@@ -59,7 +59,6 @@ function Signin() {
       );
 
       navigate(type === 1 ? "/photographer" : "/customer");
-      
     } catch (err) {
       const message = err.response?.data?.errors?.[0] || "something went wrong";
       setError(message);
