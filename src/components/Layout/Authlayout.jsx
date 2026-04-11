@@ -23,7 +23,7 @@ function Authlayout() {
       <div className="hidden md:flex w-full md:w-1/2 min-h-screen bg-[#2BAFC7] justify-center items-center">
         <img
           src={Camera}
-          className="w-80 h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[26rem] xl:h-[26rem] object-contain"
+          className="w-80 h-80 lg:w-88 lg:h-88 xl:w-104 xl:h-104 object-contain"
           alt="Camera"
         />
       </div>
